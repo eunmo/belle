@@ -1,18 +1,17 @@
 const { dml } = require('@eunmo/mysql');
 
-async function addWork(title, released, done) {
-  return dml('INSERT INTO work (title, released, done) VALUES (?)', [
-    [title, released, done],
-  ]);
+async function addWork(title, type, released, done, detail) {
+  return dml(
+    'INSERT INTO work (title, type, released, done, detail) VALUES (?)',
+    [[title, type, released, done, JSON.stringify(detail)]]
+  );
 }
 
-async function editWork(id, title, released, done) {
-  return dml('UPDATE work SET title = ?, released = ?, done = ? WHERE id = ?', [
-    title,
-    released,
-    done,
-    id,
-  ]);
+async function editWork(id, title, type, released, done, detail) {
+  return dml(
+    'UPDATE work SET title = ?, type = ?, released = ?, done = ?, detail = ? WHERE id = ?',
+    [title, type, released, done, JSON.stringify(detail), id]
+  );
 }
 
 async function addAgent(name, type, detail) {
@@ -35,8 +34,12 @@ async function removeAgent(id) {
 }
 
 async function addLinks(workId, agentIds) {
-  return dml('INSERT INTO link (workId, agentId) VALUES ?', [
-    agentIds.map((agentId) => [workId, agentId]),
+  return dml('INSERT INTO link (workId, agentId, detail) VALUES ?', [
+    agentIds.map(({ agentId, detail }) => [
+      workId,
+      agentId,
+      JSON.stringify(detail),
+    ]),
   ]);
 }
 

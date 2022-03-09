@@ -3,9 +3,12 @@ USE belle;
 CREATE TABLE work (
   id INT NOT NULL AUTO_INCREMENT,
   title VARCHAR(255) NOT NULL,
+  type CHAR(1) NOT NULL,
   released DATE NOT NULL,
   done DATETIME,
-  PRIMARY KEY (id)
+  detail JSON,
+  PRIMARY KEY (id),
+  KEY (type)
 );
 
 CREATE TABLE agent (
