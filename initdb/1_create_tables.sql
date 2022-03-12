@@ -4,6 +4,7 @@ CREATE TABLE work (
   id INT NOT NULL AUTO_INCREMENT,
   title VARCHAR(255) NOT NULL,
   type CHAR(1) NOT NULL,
+  stars TINYINT,
   released DATE NOT NULL,
   done DATETIME,
   detail JSON,
@@ -14,6 +15,7 @@ CREATE TABLE work (
 CREATE TABLE agent (
   id INT NOT NULL AUTO_INCREMENT,
   name VARCHAR(255) NOT NULL,
+  korean VARCHAR(255),
   type CHAR(1) NOT NULL,
   detail JSON NOT NULL,
   PRIMARY KEY (id)

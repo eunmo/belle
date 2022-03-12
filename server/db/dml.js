@@ -1,32 +1,30 @@
 const { dml } = require('@eunmo/mysql');
 
-async function addWork(title, type, released, done, detail) {
+async function addWork(title, type, stars, released, done, detail) {
   return dml(
-    'INSERT INTO work (title, type, released, done, detail) VALUES (?)',
-    [[title, type, released, done, JSON.stringify(detail)]]
+    'INSERT INTO work (title, type, stars, released, done, detail) VALUES (?)',
+    [[title, type, stars, released, done, JSON.stringify(detail)]]
   );
 }
 
-async function editWork(id, title, type, released, done, detail) {
+async function editWork(id, title, type, stars, released, done, detail) {
   return dml(
-    'UPDATE work SET title = ?, type = ?, released = ?, done = ?, detail = ? WHERE id = ?',
-    [title, type, released, done, JSON.stringify(detail), id]
+    'UPDATE work SET title = ?, type = ?, stars = ?, released = ?, done = ?, detail = ? WHERE id = ?',
+    [title, type, stars, released, done, JSON.stringify(detail), id]
   );
 }
 
-async function addAgent(name, type, detail) {
-  return dml('INSERT INTO agent (name, type, detail) VALUES (?)', [
-    [name, type, JSON.stringify(detail)],
+async function addAgent(name, korean, type, detail) {
+  return dml('INSERT INTO agent (name, korean, type, detail) VALUES (?)', [
+    [name, korean, type, JSON.stringify(detail)],
   ]);
 }
 
-async function editAgent(id, name, type, detail) {
-  return dml('UPDATE agent SET name = ?, type = ?, detail = ? WHERE id = ?', [
-    name,
-    type,
-    JSON.stringify(detail),
-    id,
-  ]);
+async function editAgent(id, name, korean, type, detail) {
+  return dml(
+    'UPDATE agent SET name = ?, korean = ?, type = ?, detail = ? WHERE id = ?',
+    [name, korean, type, JSON.stringify(detail), id]
+  );
 }
 
 async function removeAgent(id) {

@@ -4,6 +4,7 @@ const { addWork, addAgent, addLinks } = require('./dml');
 const work1 = [
   'title 1',
   'a',
+  3,
   new Date(Date.UTC(2020, 3, 5)), // 2020-04-05 00:00:00
   new Date(Date.UTC(2022, 4, 6, 7, 8, 9)), // 2022-05-06 07:08:09
   { x: 'y' },
@@ -11,6 +12,7 @@ const work1 = [
 const work2 = [
   'title 2',
   'a',
+  5,
   new Date(Date.UTC(2020, 3, 5)), // 2020-04-05 00:00:00
   new Date(Date.UTC(2022, 4, 6, 7, 8, 9)), // 2022-05-06 07:08:09
   { x: 'y' },
@@ -18,14 +20,15 @@ const work2 = [
 const work3 = [
   'title 3',
   'b',
+  null,
   new Date(Date.UTC(2020, 3, 5)), // 2020-04-05 00:00:00
   new Date(Date.UTC(2022, 4, 6, 7, 8, 9)), // 2022-05-06 07:08:09
   null,
 ];
 
-const agent1 = ['name 1', 'e', { y: 'z' }];
-const agent2 = ['name 2', 'f', { y: 'z' }];
-const agent3 = ['name 3', 'g', null];
+const agent1 = ['name 1', '이름 1', 'e', { y: 'z' }];
+const agent2 = ['name 2', '이름 2', 'f', { y: 'z' }];
+const agent3 = ['name 3', null, 'g', null];
 
 const linkDetail1 = { z: 'a' };
 
