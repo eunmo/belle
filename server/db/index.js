@@ -7,6 +7,7 @@ const {
   addLinks,
   removeLink,
 } = require('./dml');
+const { getWorksByType, getWork, getAgentsByWorkId } = require('./query');
 
 module.exports = {
   addWork,
@@ -16,4 +17,7 @@ module.exports = {
   removeAgent,
   addLinks,
   removeLink,
+  getWorksByType,
+  getWork,
+  getAgentsByWorkId,
 };
